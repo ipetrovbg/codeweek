@@ -1,0 +1,238 @@
+/* General Styling */
+
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-transition: ease-in-out 0.2s;
+}	
+
+body {
+	font-family: 'Raleway', sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	color: #48474d;
+	letter-spacing: 1px;
+	width: 100%;
+}
+
+/* Scrollbar properties */
+
+body::-webkit-scrollbar {
+    width: 0.5em;
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 16px rgba(0,0,0,0.4);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 18px;
+}
+
+/* -- */
+
+
+/* ----------------- navigation ----------------- */
+
+.navbar {
+	 border-radius: 0px;
+}
+
+.navbar-brand {
+	text-indent: -9999px;
+	background: url('../img/index/logo.png') no-repeat;
+	width: 139px;
+	height: 42px;
+	margin-top: 9px;
+}
+
+.navbar-default {
+	background: none;
+	border: none;
+	margin-top: 0px;
+	background: #019875;
+	width: 100%;
+}
+
+.navbar>.container .navbar-brand, 
+.navbar>.container-fluid .navbar-brand {
+	margin-left: 160px;
+}
+
+.navbar-default .navbar-nav {
+	float: right;
+	margin-top: 13px;
+	margin-right: 130px;
+}
+
+/* navbar animation */
+
+.navbar-default .navbar-nav>li>a {
+	font-size: 16px;
+	text-align: center;
+	padding: 22px 6px;
+	margin-left: 18px;
+	font-weight: 400;
+	padding: 0px 10px;
+	height: 25px;
+	line-height: 25px;
+	color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+	color: #00523f;
+	font-weight: 600;
+}
+
+.navbar-default .navbar-nav>.active>a, 
+.navbar-default .navbar-nav>.active>a:focus, 
+.navbar-default .navbar-nav>.active>a:hover {
+	color: #00523f;
+	background: none;
+	font-weight: 600;
+}
+
+
+/* ----------------- hero ----------------- */
+
+.jumbotron {
+	margin-top: -50px;
+	padding-bottom: 0px;
+}
+
+.jumbotron .container {
+	padding: 0px 60px 0px 60px;
+}
+
+.jumbotron .container .hero h1 {
+	font-size: 36px;
+	margin-top: 60px;
+}
+
+.jumbotron .container .hero h1 span {
+	font-weight: 800;
+}
+
+.jumbotron .container .hero p {
+	font-size: 18px;
+	margin-top: 10px;
+	padding-top: 15px;
+	padding-right: 40px;
+	font-weight: 400;
+	color: #7a797f;
+}
+
+.jumbotron .container .hero img {
+	margin-top: 40px;
+}
+
+.jumbotron .container .right {
+	padding-left: 40px;
+}
+
+.jumbotron .container .hero {
+	margin-left: 40px;
+}
+.jumbotron .container .right input {
+	background-color: #dfdfdf;
+    border: none;
+    border-radius: 34px;
+    text-align: left;
+    height: 46px;
+    width: 280px;
+    display: inline;
+    font-size: 16px;
+    color: #48474d !important;
+    padding-left: 20px;
+}
+
+.jumbotron .container .right input:focus {
+	box-shadow: none;
+}
+
+.jumbotron .container .right .username {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.jumbotron .container .right .btn {
+	background-color: #48474d;
+	margin-top: 20px;
+    border: none;
+    border-radius: 34px;
+    text-align: center;
+    height: 46px;
+    width: 150px;
+    font-size: 16px;
+    color: #fff !important;
+}
+
+.jumbotron .container .right .btn:hover {
+	background: #363639;
+}
+
+/* ----------------- sign up ----------------- */
+
+.sign-up {
+	margin-top: -32px;
+	padding-top: 80px;
+	background: #019875;
+}
+
+.sign-up .container {
+	padding: 60px 60px 140px 60px;
+}
+
+.sign-up .col-md-12 h1 {
+	color: #fff;
+	margin-bottom: 60px;
+}
+
+.sign-up .col-md-12 h1 span {
+	font-weight: 700;
+}
+
+.sign-up .input-group .form-control {
+
+	margin-bottom: 20px;
+}
+
+.sign-up .container input {
+	background-color: #dfdfdf;
+    border: none;
+    border-radius: 34px;
+    text-align: left;
+    height: 52px;
+    width: 340px;
+    display: inline;
+    font-size: 16px;
+    color: #48474d !important;
+    padding-left: 20px;
+}
+
+.sign-up .input-group .form-control {
+	font-weight: 500;
+	border-radius: 34px;
+}
+
+.sign-up .username, .sign-up .pass, .sign-up .email {
+	float: right;
+	border-radius: 34px;
+}
+
+.sign-up .row.fourth .btn{
+	margin-top: 20px;
+	background-color: #00654e;
+    border: none;
+    border-radius: 34px;
+    text-align: center;
+    height: 52px;
+    width: 200px;
+    font-size: 16px;
+    color: #fff !important;
+}
+
+.sign-up input:focus {
+	box-shadow: none;
+}
