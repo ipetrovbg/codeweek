@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
+-- version 4.1.6
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Oct 10, 2015 at 11:12 
--- Server version: 5.6.26
--- PHP Version: 5.6.12
+-- Host: 127.0.0.1
+-- Generation Time: 
+-- Версия на сървъра: 5.6.16
+-- PHP Version: 5.5.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `documents`
@@ -23,72 +23,43 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `files`
+-- Структура на таблица `files`
 --
 
 CREATE TABLE IF NOT EXISTS `files` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `file_name` varchar(255) NOT NULL,
   `file_dir` varchar(255) NOT NULL,
-  `id_user` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_user` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_user` (`id_user`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Структура на таблица `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL,
-  `usre_name` varchar(255) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(255) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `full_name` varchar(255) NOT NULL,
-  `decription` text NOT NULL,
+  `description` text NOT NULL,
   `age` int(11) NOT NULL,
-  `sex` tinyint(4) DEFAULT NULL,
-  `pic` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `sex` varchar(10) DEFAULT NULL,
+  `pic` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `users`
+-- Схема на данните от таблица `users`
 --
 
-INSERT INTO `users` (`id`, `usre_name`, `full_name`, `decription`, `age`, `sex`, `pic`) VALUES
-(1, 'milenski64', 'Milen Tsolov', 'Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla ', 17, 1, 'pics/img_andy.png'),
-(2, 'mpittash', 'Marios Pittas', 'I love coding and coffee. ', 20, 1, ''),
-(3, 'spinach', 'spanak', 'My name is spinach. I love spinach.', 15, 1, 'pics/TANYU-CILEK-PROFILE-PIC-3.jpg');
+INSERT INTO `users` (`id`, `user_name`, `password`, `full_name`, `description`, `age`, `sex`, `pic`) VALUES
+(1, 'ipetrovbg', 'ad95e8df42ecd59347b71b04ccce8de6d04e1090', 'Петър Петров', '', 26, 'male', 'pics/ipetrovbg-1444517205-vtatsa-balkan.jpg');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `files`
---
-ALTER TABLE `files`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_user` (`id_user`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `files`
---
-ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
