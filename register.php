@@ -59,7 +59,7 @@ if(!empty($_FILES)){
 
 					$reg_q = "INSERT INTO `users`(`user_name`, `password`, `full_name`, `description`, `age`, `sex`, `pic`)
 					VALUES ('$username','$password', '$full_name', '$description', '$age', '$sex', '$new_pic')";
-					echo $reg_q;
+					
 					if (mysqli_query($conn, $reg_q)) {
 
 						echo "Successful registration! <br />";

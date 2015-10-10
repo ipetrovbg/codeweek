@@ -123,18 +123,75 @@ if (!$_SESSION) {
 		<div class="row">
 			<div class="col-md-12 text-center">
 				<h1>Sign Up <span>For Free</span></h1>
+
+				<?php 
+				
+					if (isset($_POST['register'])) {
+						if(!empty($_FILES)){
+							if (!empty($_FILES['userphoto']['tmp_name'])) {
+								$username = $_POST['username'];
+								$password = $_POST['password'];
+								$password_repeat = $_POST['password_repeat'];
+								//$description = $_POST['description'];
+								$full_name = $_POST['full_name'];
+								$age = $_POST['age'];
+								$gender = $_POST['gender'];
+								$file_tmp = $_FILES['userphoto']['tmp_name'];
+								$file_type = $_FILES['userphoto']['type'];
+								$userphoto = $username.'-'.time().'-'.$_FILES['userphoto']['name'];
+								$new_pic = 'pics/'.$userphoto;
+							//validation
+							//username
+
+								$username_q = "SELECT user_name	FROM users WHERE user_name = '$username'";
+								$username_result = mysqli_query($connect, $username_q) or die (mysqli_error());
+								$numUsers 		= 		mysqli_num_rows($username_result);
+								if ($numUsers == 0) {
+
+									if ($password == $password_repeat) {
+
+										$password = sha1($password);
+
+											$reg_q = "INSERT INTO `users`(`user_name`, `password`, `full_name`, `age`, `sex`, `pic`)
+											VALUES ('$username','$password', '$full_name', '$age', '$gender', '$new_pic')";
+											
+											if (mysqli_query($connect, $reg_q)) {
+
+												echo "Successful registration! <br />";
+												move_uploaded_file($file_tmp, $new_pic);
+
+
+											}else{
+												echo 'something wrong';
+											}
+									} else{
+
+										echo "Password doesn`t match! Please enter again!";
+									}
+
+									
+								}else{
+									echo "Username is not available! Please choose another one!";
+								}
+								
+							
+							}
+						}
+					}
+					?>
+
 			</div>
 		</div>
 
 		<div class="row first">
 			<div class="col-md-6">
 				<div class="input-group username">
-					<input type="text" class="form-control username" placeholder="Username" > 
+					<input type="text" class="form-control username" name="username" placeholder="Username" > 
 				</div> 
 			</div>
 			<div class="col-md-6">
 				<div class="input-group">
-					<input type="text" class="form-control full-name" placeholder="Full Name" > 
+					<input type="text" class="form-control full-name" name="full_name" placeholder="Full Name" > 
 				</div> 
 			</div>
 		</div>
@@ -142,12 +199,12 @@ if (!$_SESSION) {
 		<div class="row second">
 			<div class="col-md-6">
 				<div class="input-group pass">
-					<input type="text" class="form-control pass" placeholder="Password" > 
+					<input type="password" class="form-control pass" name="password" placeholder="Password" > 
 				</div> 
 			</div>
 			<div class="col-md-6">
 				<div class="input-group">
-					<input type="text" class="form-control repeat-pass" placeholder="Repeat Password" > 
+					<input type="password" class="form-control repeat-pass" name="password_repeat" placeholder="Repeat Password" > 
 				</div> 
 			</div>
 		</div>
@@ -160,29 +217,29 @@ if (!$_SESSION) {
 			</div>
 			<div class="col-md-6">
 				<div class="input-group">
-					<input type="text" class="form-control age" placeholder="Age" > 
+					<input type="text" class="form-control age" name="age" placeholder="Age" > 
 				</div> 
 			</div>
 		</div>
-
+		<div class="row fifth">
+			<div class="col-md-12">
+				<div class="input-group">
+					<input type="file" class="form-control file" name="userphoto" placeholder="file" > 
+				</div> 
+			</div>
+		</div>
 		<div class="row fourth">
 		<div class="col-md-6">
-			<div class="dropdown">
-			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-			    Dropdown
-			    <span class="caret"></span>
-			  </button>
-			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-			    <li><a href="#">Action</a></li>
-			    <li><a href="#">Another action</a></li>
-			    <li><a href="#">Something else here</a></li>
-			    <li><a href="#">Separated link</a></li>
-			  </ul>
-			</div>
+			<input type="radio" name="gender"
+			<?php if (isset($_POST['gender']) && $_POST['gender']=="female") echo "checked";?>
+			value="female">Women
+			<input type="radio" name="gender"
+			<?php if (isset($_POST['gender']) && $_POST['gender']=="male") echo "checked";?>
+			value="male">Men
 		</div>
 
 			<div class="col-md-6 ">
-				<button class="btn btn-info submit-btn" type="submit">Let's go</button>
+				<button class="btn btn-info submit-btn" name="register" type="submit">Let's go</button>
 			</div>
 		</div>
 
